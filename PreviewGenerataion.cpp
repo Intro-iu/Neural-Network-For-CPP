@@ -35,7 +35,7 @@ int main() {
 
     Network.ForwardPropagation(Normalize_MinMax(Input));
     freopen("./Output/Test-Output.txt", "w", stdout);
-    disp(Restore_MinMax(Sample_y, Network.A[L-1]));
+    disp(Restore_MinMax(Network.A[L-1], Sample_y), false);
     fclose(stdout);
 
 }

@@ -6,13 +6,13 @@ using namespace std;
 
 Matrix TargetFunction(const Matrix &x) {
     Matrix Mat = MatrixAssignment(x.row, x.col);
-    Iter(Mat) Mat(i, j) = x(i, j)*x(i, j);
+    Iter(Mat) Mat(i, j) = sin(x(i, j)+1);
     return Mat;
 }
 
 int main() {
-    double l = 0;   double r = 6;
-    int n = 5000;
+    double l = -5;   double r = 5;
+    int n = 750;
     int Input_Size = 1;
     int Output_Size = 1;
 

@@ -18,7 +18,7 @@ void ReadSamples(const int &n, const int &Input_Size, const int &Output_Size, Ma
 
 
 int main() {
-    int n = 200;
+    int n = 750;
     int Generation = 100000;
 
     Matrix Samples_X_ori, Samples_Y_ori;
@@ -32,7 +32,7 @@ int main() {
 
     //cout << "Samples:\n";   disp(Samples_X_nor);    disp(Samples_Y_nor);
     
-    NNwork Network(4, {1, 2, 3, 1}, -2, 2);
+    NNwork Network(4, {1, 4, 9, 1}, -1, 1);
     
     long long t = 0;
 
@@ -40,10 +40,10 @@ int main() {
     while (t < Generation) {
         Network.ForwardPropagation(Samples_X_nor);
         Network.BackwardPropagation(Samples_Y_nor);
-        Network.GradientDescent(0.001);
+        Network.Adam();
         if(t++ % 5000 == 0 || t == Generation) {
             Network.Output("./Output/Train-Para.txt", Samples_X_ori, Samples_Y_ori);
-            cout << "Generation: " << t << "  MSLE: " << Network.MSLE(Samples_Y_nor) << "  MSE: " << Network.MSE(Samples_Y_nor) << endl;
+            cout << "Generation: " << t << " \tMSLE: " << Network.MSLE(Samples_Y_nor) << " \tMSE: " << Network.MSE(Samples_Y_nor) << endl;
         }
     }
 }

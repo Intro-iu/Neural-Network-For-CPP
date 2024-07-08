@@ -84,7 +84,7 @@ struct NNwork {
     }
 
     ~NNwork(){
-        delete [] Z, A, W, B, dZ, dW, dB, vW, vB, sW, sB;
+        delete [] Siz, Z, A, W, B, dZ, dW, dB, vW, vB, sW, sB;
     }
 
     Matrix Act(const Matrix &x) {
@@ -159,6 +159,7 @@ struct NNwork {
         for(int i = 0;i < L;i++)    cout << Siz[i] << " ";
         cout << endl << endl;
         for(int i = 1; i < L;i++)   disp(W[i]);
+        cout << endl;
         for(int i = 1; i < L;i++)   disp(B[i]);
         // printf("%.8lf %.8lf\n");
         cout << Samples_X_ori.row << " " << Samples_X_ori.col << endl;  disp(Samples_X_ori);
